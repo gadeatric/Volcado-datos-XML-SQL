@@ -42,7 +42,7 @@ One of the files we receive is an .sql file (data_sql.sql). After a first visual
 
 
 ### Cleaning the .sql file
-Once everything discussed in the previous section has been observed, we proceed to work with the .sql file in MySQL Workbench. To do this we have to take into account the requirements of the O.P.:
+Once everything discussed in the previous section has been observed, we proceed to work with the .sql file in MySQL Workbench. To do this we have to take into account the requirements of the P.O.:
 - Change the "ERROR" to "NULL".
 - Remove the column d482xta.
 

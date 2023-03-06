@@ -1,52 +1,49 @@
-# Fusión y lectura de datos XML, TXT en MySQL:
 
-## Creación de la Base de Datos y sus tablas
-El Product Owner (de ahora en adelante, P.O.) nos hace llegar tres archivos (.xml, .txt y .sql) con
- el objetivo de fusionarlos en una única base de datos. Para ello, será necesario elaborar un programa que facilite la legibilidad de los datos tal y como nos solicita el P.O., además de automatizar el proceso de limpieza para futuros inputs que lleguen a la base de datos, y los relacione entre ellos.
+# Merging and reading XML, TXT data in MySQL:
 
-### Características de la Base de Datos
-En un fichero .sql (sql_code.sql) comenzamos este proyecto con la creación de la base de datos "project1", donde se agregará la información de los tres ficheros que nos facita el P.O. en diferentes tablas. Para ello, es necesario crear una tabla para cada fichero en MySQL Workbench ("data_sql", "data_xml", "data_txt").
+## Creation of the Database and its tables.
+The Product Owner (from now on, P.O.) sends us three files (.xml, .txt and .sql) in order to merge them into a single database.
+ the objective of merging them into a single database. To do this, it will be necessary to develop a program that facilitates the readability of the data as requested by the P.O., in addition to automating the cleaning process for future inputs that reach the database, and relate them to each other.
 
-Las especificaciones que deben cumplir las tablas son:
-- "data_sql": debe almacenar los datos del archivo data_sql.sql. Debe ser la tabla madre, donde la clave primaria es de tipo numérico y se corresponde con la columna "index_sql". El resto de columnas son de tipo texto.
-- "data_xml": debe almacenar los datos del archivo data_xml.xml. Su clave primaria es "index_xml" y su clave foránea es la columna "index_sql", ambas de tipo numérico. El resto de columnas son de tipo texto.
-- "data_txt": debe almacenar los datos del archivo data_txt.txt. Su clave primaria es "index_txt" y su clave foránea es la columna "index_sql", ambas de tipo numérico. El resto de columnas son de tipo texto.
+### Characteristics of the Database
+In a .sql file (sql_code.sql) we start this project with the creation of the database "project1", where the information of the three files provided by the P.O. will be aggregated in different tables. For this, it is necessary to create a table for each file in MySQL Workbench ("data_sql", "data_xml", "data_txt").
 
-Las tres tablas se relacionarán mediante la columna "index_sql".
-Para la creación de las tablas observamos previamente el contenido de las columnas para ajustar las características de la columna al tipo de dato que va a contener.
+The specifications that the tables must meet are:
+- "data_sql": it must store the data from the data_sql.sql file. It must be the mother table, where the primary key is of numeric type and corresponds to the column "index_sql". The rest of the columns are of type text.
+- "data_xml": it must store the data from the data_xml.xml file. Its primary key is "index_xml" and its foreign key is the column "index_sql", both of numeric type. The rest of the columns are of text type.
+- "data_txt": it must store the data from the data_txt.txt file. Its primary key is "index_txt" and its foreign key is the column "index_sql", both of numeric type. The rest of the columns are of text type.
 
-
-## Lectura y explicación de la estructura del archivo .sql:
-El Product Owner (de ahora en adelante, P.O.) nos hace llegar tres archivos (.xml, .txt y .sql) con el objetivo de fusionarlos en una única base de datos. Para ello, será necesario elaborar un programa que facilite la legibilidad de los datos tal y como nos solicita el P.O., además de automatizar el proceso de limpieza para futuros inputs que lleguen a la base de datos.
-
-### Características del archivo .sql:
+The three tables will be related through the column "index_sql".
+For the creation of the tables we previously observe the content of the columns to adjust the characteristics of the column to the type of data it will contain.
 
 
-Uno de los ficheros que recibimos es un archivo .sql (data_sql.sql). Después de una primera visualización del documento en MySQl Workbench encontramos:
+## Reading and explanation of the structure of the .sql file:
+The Product Owner (from now on, P.O.) sends us three files (.xml, .txt and .sql) in order to merge them into a single database. To do this, it will be necessary to develop a program that facilitates the readability of the data as requested by the P.O., in addition to automating the cleaning process for future inputs to the database.
 
-- Al principio del fichero, vemos las características del archivo, que no son necesarias para los objetivos del proyecto.
-
-- A partir de la línea 24 de este archivo, observamos una serie de datos dispuestos de tal manera que se puede apreciar que es una tabla.
-
-- Con relación a la estructura de los datos, se puede apreciar que las filas de la futura tabla están organizados dentro de paréntesis. A su vez, dentro de cada paréntesis, vemos la division de columnas por comas (",").
-
-- Llama la atención el gran número de "errores" que hay registrados.
-
-- Se evidencia que el nombre de las columnas no está disponible en este archivo.
-
-- Al principio de cada línea se observan un número que corresponderá a los "indices_sql". Estos índices relacionan cada fila del archivo .sql con la fila del mismo índice en el archivo .xml y el archivo .txt.
-
-- Por otra parte, estos registros presentan los datos para una columna que el P.O. nos ha pedido que eliminemos (d482xta).
+### Characteristics of the .sql file:
 
 
+One of the files we receive is an .sql file (data_sql.sql). After a first visualization of the document in MySQl Workbench we find:
 
-### Limpieza del archivo .sql
-Una vez observado todo lo tratado en el apartado anterior, procedemos a trabajar con el archivo .sql en MySQL Workbench. Para ello hemos de tener en cuenta los requerimientos del P.O.:
-- Cambiar los "ERROR" por "NULL".
-- Quitar la columna d482xta.
+- At the beginning of the file, we see the characteristics of the file, which are not necessary for the project objectives.
 
-Al tomar los datos a introducir del apartado "VALUES" del archivo .sql, observamos que se insertan correctamente en la tabla "data_sql" creada en la base de datos project1.
+- From line 24 of this file, we observe a series of data arranged in such a way that we can see that it is a table.
+
+- Regarding the structure of the data, it can be seen that the rows of the future table are organized within parentheses. In turn, within each parenthesis, we see the division of columns by commas (",").
+
+- The large number of "errors" recorded is striking.
+
+- It is evident that the name of the columns is not available in this file.
+
+- At the beginning of each line there is a number corresponding to the "indices_sql". These indexes relate each row of the .sql file to the row of the same index in the .xml file and the .txt file.
+
+- Moreover, these records present the data for a column that the P.O. has asked us to delete (d482xta).
 
 
 
+### Cleaning the .sql file
+Once everything discussed in the previous section has been observed, we proceed to work with the .sql file in MySQL Workbench. To do this we have to take into account the requirements of the O.P.:
+- Change the "ERROR" to "NULL".
+- Remove the column d482xta.
 
+When taking the data to introduce of the section "VALUES" of the .sql file, we observe that they are inserted correctly in the table "data_sql" created in the database project1.
